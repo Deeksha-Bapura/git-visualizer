@@ -1,0 +1,27 @@
+<div class="hero">
+  <div class="hero-content">
+    <h1 class="title">Git Time Machine</h1>
+    <p class="subtitle">Visualize how any GitHub repository evolved over time</p>
+
+    <div class="search-box">
+      <input
+        [(ngModel)]="repoInput"
+        (keyup.enter)="analyze()"
+        placeholder="Enter owner/repo (e.g. microsoft/vscode)"
+        class="search-input"
+      />
+      <button (click)="analyze()" class="search-btn">Analyze →</button>
+    </div>
+
+    @if (error) {
+      <p class="error">{{ error }}</p>
+    }
+
+    <div class="examples">
+      <span>Try: </span>
+      <span class="example" (click)="repoInput='microsoft/vscode'; analyze()">microsoft/vscode</span>
+      <span class="example" (click)="repoInput='angular/angular'; analyze()">angular/angular</span>
+      <span class="example" (click)="repoInput='dotnet/runtime'; analyze()">dotnet/runtime</span>
+    </div>
+  </div>
+</div>

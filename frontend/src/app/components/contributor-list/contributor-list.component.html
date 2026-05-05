@@ -1,0 +1,15 @@
+<div class="contributor-list">
+  @for (contributor of sorted; track contributor.username; let i = $index) {
+    <div class="contributor-row">
+      <span class="rank">#{{ i + 1 }}</span>
+      <div class="avatar">{{ contributor.username.charAt(0).toUpperCase() }}</div>
+      <div class="info">
+        <span class="name">{{ contributor.username }}</span>
+        <div class="bar-container">
+          <div class="bar" [style.width]="getBarWidth(contributor.totalCommits)"></div>
+        </div>
+      </div>
+      <span class="commits">{{ contributor.totalCommits }}</span>
+    </div>
+  }
+</div>

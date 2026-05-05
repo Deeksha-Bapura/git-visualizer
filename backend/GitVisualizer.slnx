@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="GitVisualizer.API/GitVisualizer.API.csproj" />
+  <Project Path="GitVisualizer.Core/GitVisualizer.Core.csproj" />
+  <Project Path="GitVisualizer.Tests/GitVisualizer.Tests.csproj" />
+</Solution>

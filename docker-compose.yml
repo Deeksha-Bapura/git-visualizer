@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: gitvisualizer-db
+    environment:
+      POSTGRES_DB: gitvisualizer
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: gitvisualizer-api
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_URLS=http://+:5000
+      - ConnectionStrings__Default=Host=db;Database=gitvisualizer;Username=admin;Password=secret
+      - GitHub__Token=${GITHUB_TOKEN}
+    depends_on:
+      - db
+
+volumes:
+  pgdata:

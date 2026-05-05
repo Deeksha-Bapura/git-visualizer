@@ -1,0 +1,61 @@
+<div class="dashboard">
+
+  <!-- Header -->
+  <div class="header">
+    <button class="back-btn" (click)="goBack()">← Back</button>
+    <div class="repo-info">
+      <h1>{{ owner }}/{{ repo }}</h1>
+      <span class="badge">Git Time Machine</span>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  @if (loading) {
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>Analyzing repository history...</p>
+    </div>
+  }
+
+  <!-- Error -->
+  @if (error) {
+    <div class="error-box">
+      <p>{{ error }}</p>
+      <button (click)="loadData()">Retry</button>
+    </div>
+  }
+
+  <!-- Data -->
+  @if (data && !loading) {
+    <div class="stats-row">
+      <div class="stat-card">
+        <span class="stat-number">{{ data.commitTimeline.length }}</span>
+        <span class="stat-label">Commits Analyzed</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">{{ data.contributors.length }}</span>
+        <span class="stat-label">Contributors</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">{{ getTopContributor() }}</span>
+        <span class="stat-label">Top Contributor</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">{{ getDateRange() }}</span>
+        <span class="stat-label">Date Range</span>
+      </div>
+    </div>
+
+    <div class="charts-grid">
+      <div class="chart-card full-width">
+        <h2>📈 Commit Timeline</h2>
+        <app-commit-timeline [commits]="data.commitTimeline" />
+      </div>
+
+      <div class="chart-card">
+        <h2>👥 Top Contributors</h2>
+        <app-contributor-list [contributors]="data.contributors" />
+      </div>
+    </div>
+  }
+</div>

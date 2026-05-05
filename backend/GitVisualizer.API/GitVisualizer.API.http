@@ -1,0 +1,6 @@
+@GitVisualizer.API_HostAddress = http://localhost:5207
+
+GET {{GitVisualizer.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
