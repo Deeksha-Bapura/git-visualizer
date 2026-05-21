@@ -29,7 +29,7 @@ export interface RepoAnalysis {
   providedIn: 'root'
 })
 export class GithubService {
-  private apiUrl = 'http://localhost:5000/api';
+  private apiUrl = 'https://git-visualizer-60tr.onrender.com/api';
 
   constructor(private http: HttpClient) {}
 
