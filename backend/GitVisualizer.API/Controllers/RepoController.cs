@@ -23,4 +23,9 @@ public class RepoController : ControllerBase
         var result = await _github.AnalyzeRepositoryAsync(owner, repo);
         return Ok(result);
     }
-}
+    [HttpGet("health")]
+    public IActionResult Health()
+        {
+            return Ok(new { status = "healthy", timestamp = DateTime.UtcNow });
+        }
+    }
