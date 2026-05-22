@@ -1,6 +1,6 @@
 {
-  "buildCommand": "npx ng build --configuration production",
-  "outputDirectory": "dist/frontend",
+  "buildCommand": "npx ng build --configuration production --no-server-rendering",
+  "outputDirectory": "dist/frontend/browser",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
